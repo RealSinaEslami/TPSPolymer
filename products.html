@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <!-- Preload -->
+  <link rel="preload" as="image" href="./images/hero_product.jpg" media="(max-width: 767px)">
+
+  <meta charset="UTF-8">
+  <title>محصولات | تهران پلیمر صبا</title>
+  <link rel="icon" type="image/webp" href="./images/log_blue.webp">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Tailwind CSS -->
+  <link href="./dist/output.css" rel="stylesheet">
+
+  <style>
+    
+    .header-actions {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+    }
+    
+    .btn-catalog {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 6px 15px;
+        color: #16fa9b !important;
+        border: 2px solid #16fa9b;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        width: auto;
+        transition: all 0.3s ease;
+        background: transparent;
+        white-space: nowrap;
+    }
+
+    .btn-catalog:hover {
+        color: #0b3780 !important;
+        background-color: #16fa9b;
+        border-color: #16fa9b;
+    }
+
+    .btn-catalog i {
+        font-size: 1.1rem;
+    }
+
+    .btn-text {
+        display: inline-block;
+    }
+
+    @media (max-width: 600px) {
+        .btn-catalog span {
+            display: none !important;
+        }
+        
+        .btn-catalog i {
+            display: none !important;
+        }
+        
+        .btn-catalog .catalog-icon {
+            display: inline-block !important;
+            width: 1.9rem;
+            height: 1.9rem;
+            fill: #16fa9b;
+        }
+
+        .btn-catalog:hover {
+            color: #0b3780 !important;
+            background-color: #16fa9b;
+            border-color: #16fa9b;
+        }
+        
+        .btn-catalog {
+            padding: 8px !important;
+            border-radius: 100%;
+            background-color: #ffffff00;
+        }
+
+        .header-actions {
+          margin-right: 5px;
+        }
+
+        .btn-catalog:hover {
+            background-color: #16fa9b !important;
+            border-color: #16fa9b !important;
+            transform: scale(1.05);
+        }
+
+        .btn-catalog:hover .catalog-icon {
+            fill: #0b3780 !important;
+        }
+    }
+
+    .mobile-menu-closed {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .mobile-menu-open {
+      max-height: 300px;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    #menu-btn.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    #menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+    #menu-btn.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* انیمیشن کارت محصولات */
+    .product-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* اسکرول نرم */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* افکت متن روی بنر */
+    .hero-banner {
+      background: linear-gradient(135deg, rgba(11,55,128,0.85) 0%, rgba(11,55,128,0.7) 50%, rgba(22,250,155,0.3) 100%);
+    }
+
+    .product-card {
+        position: relative;
+        overflow: hidden;
+        transform: translate3d(0, 0, 0);
+        transition: transform 0.45s ease, box-shadow 0.45s ease;
+        will-change: transform;
+    }
+
+    .product-card:hover {
+        transform: translate3d(0, -6px, 0);
+        box-shadow: 0 12px 28px -14px #16fa9b8c;
+    }
+
+    .card-enter {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+
+    .card-enter-active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .card-exit-active {
+      opacity: 0;
+      transform: translateY(20px) scale(0.9);
+    }
+
+    .product-card img {
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.12);
+    }
+  </style>
+
+</head>
+<body class="font-parastoo bg-white text-slate-900">
+  <div id="page-loader" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+    <div class="relative">
+      <!-- لوگو -->
+      <img src="./images/load.webp" 
+          class="relative z-10"
+          style="width: 65px; height: auto; max-height: 95px;"
+          alt="logo">
+      
+      <!-- دایره چرخان با SVG -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10">
+        <svg class="animate-spin" width="120" height="140" viewBox="0 0 120 140">
+          <circle cx="60" cy="70" r="58" fill="none" 
+                  stroke="#16fa9b8c" stroke-width="3" 
+                  stroke-dasharray="140 180" stroke-linecap="round"/>
+          <!-- <circle cx="60" cy="70" r="40" fill="none" 
+                  stroke="#8b5cf6" stroke-width="2" 
+                  stroke-dasharray="100 140" stroke-linecap="round"
+                  class="animate-spin-slow"/> -->
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="bg-[#0b3780] text-white">
+    <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-24">
+        
+        <!-- Logo + Title -->
+        <div class="flex items-center gap-3">
+          <a href="index.html#home" class="group block h-20 w-16">
+            <span class="relative block h-full w-full">
+              <!-- لوگوی حالت عادی -->
+              <img src="./images/logo_white.webp" alt="logo" 
+                   class="absolute inset-0 h-full w-full object-contain opacity-100 
+                          transition-opacity duration-500 will-change-opacity
+                          group-hover:opacity-0" />
+            
+              <!-- لوگوی حالت hover -->
+              <img src="./images/logo_green.webp" alt="logo-hover" 
+                   class="absolute inset-0 h-full w-full object-contain opacity-0 
+                          transition-opacity duration-500 will-change-opacity
+                          group-hover:opacity-100" />
+            </span>
+          </a>         
+          
+          <div class="flex flex-col">
+            <div class="flex items-baseline gap-2">
+              <a href="index.html#home" class="group flex flex-col items-start w-fit p-2">
+                <span class="text-5xl font-nastaliq text-white transition-colors duration-500 group-hover:text-[#16fa9b]">
+                  تهران پلیمر صبا
+                </span>
+                
+                <span class="mt-2 text-xl font-nastaliq text-white/60 transition-colors duration-500 group-hover:text-[#16fa9b]/80">
+                  سهامی خاص - دانش بنیان فناور
+                </span>
+              </a>
+           
+            </div>
+          </div>
+        </div>
+    
+        <div class="flex items-center gap-4">
+          
+          <div class="header-actions">
+            <a href="/Catalogue.pdf" class="btn-catalog" download="TPS-Catalogue">
+          
+              <svg class="catalog-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M6 2.75A2.75 2.75 0 0 0 3.25 5.5v13A2.75 2.75 0 0 0 6 21.25h12A2.75 2.75 0 0 0 20.75 18.5v-13A2.75 2.75 0 0 0 18 2.75H6zm1.25 2h9.5A1.25 1.25 0 0 1 18 6v12a1.25 1.25 0 0 1-1.25 1.25h-9.5A1.25 1.25 0 0 1 6 18V6a1.25 1.25 0 0 1 1.25-1.25zM8 7.5h8v1.5H8V7.5zm0 3h8V12H8v-1.5zm0 3h5v1.5H8v-1.5z"/>
+              </svg>
+          
+              <span class="btn-text">کاتالوگ دیجیتال</span>
+          
+            </a>
+          </div>
+    
+          <!-- Desktop Menu -->
+          <nav class="hidden min-[1001px]:flex items-center gap-8 border-r border-white/20 pr-8">
+            <a href="index.html#home" class="relative text-lg min-[1001px]:text-xl font-bold transition-all duration-300 hover:text-[#16fa9b] hover:-translate-y-1 after:content-[''] after:absolute after:right-0 after:-bottom-2 after:h-[2px] after:w-0 after:bg-[#16fa9b] after:transition-all after:duration-300 hover:after:w-full">خانه</a>
+            <a href="index.html#about" class="relative text-lg min-[1001px]:text-xl font-bold transition-all duration-300 hover:text-[#16fa9b] hover:-translate-y-1 after:content-[''] after:absolute after:right-0 after:-bottom-2 after:h-[2px] after:w-0 after:bg-[#16fa9b] after:transition-all after:duration-300 hover:after:w-full">درباره شرکت</a>
+            <a href="index.html#contact" class="relative text-lg min-[1001px]:text-xl font-bold transition-all duration-300 hover:text-[#16fa9b] hover:-translate-y-1 after:content-[''] after:absolute after:right-0 after:-bottom-2 after:h-[2px] after:w-0 after:bg-[#16fa9b] after:transition-all after:duration-300 hover:after:w-full">تماس با ما</a>
+            <a href="index.html#certificates" class="relative text-lg min-[1001px]:text-xl font-bold transition-all duration-300 hover:text-[#16fa9b] hover:-translate-y-1 after:content-[''] after:absolute after:right-0 after:-bottom-2 after:h-[2px] after:w-0 after:bg-[#16fa9b] after:transition-all after:duration-300 hover:after:w-full">گواهینامه</a>
+          </nav>
+    
+          <button
+            id="menu-btn"
+            class="min-[1001px]:hidden inline-flex flex-col justify-center items-center gap-1.5 w-12 h-12 rounded-full border border-white/60 bg-white/10 backdrop-blur-sm group transition"
+            aria-label="باز کردن منو">
+            <span class="w-8 h-[3px] bg-white rounded transition-all duration-300 group-hover:bg-[#16fa9b]"></span>
+            <span class="w-8 h-[3px] bg-white rounded transition-all duration-300 group-hover:bg-[#16fa9b]"></span>
+            <span class="w-8 h-[3px] bg-white rounded transition-all duration-300 group-hover:bg-[#16fa9b]"></span>
+          </button>
+        </div>
+      </div>
+    </div>    
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="lg:hidden mobile-menu-closed">
+      <nav class="flex flex-col px-4 py-3 space-y-1 bg-[#0b3780]">
+        <a href="index.html#home" class="block py-2 px-3 text-white text-lg hover:bg-[#16fa9b] hover:text-black transition rounded-md">خانه</a>
+        <a href="index.html#about" class="block py-2 px-3 text-white text-lg hover:bg-[#16fa9b] hover:text-black transition rounded-md">درباره شرکت</a>
+        <a href="index.html#contact" class="block py-2 px-3 text-white text-lg hover:bg-[#16fa9b] hover:text-black transition rounded-md">تماس با ما</a>
+        <a href="index.html#certificates" class="block py-2 px-3 text-white text-lg hover:bg-[#16fa9b] hover:text-black transition rounded-md">گواهینامه و افتخارات</a>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- Hero Section -->
+  <section
+    id="home-products"
+    class="relative bg-cover bg-center bg-no-repeat text-[#0b3780]
+          min-h-[75vh] lg:min-h-[90vh]
+          bg-[url('../images/hero_product.jpg')]"
+  >
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-white/40 md:bg-white/20 transition-all"></div>
+
+    <!-- Content -->
+    <div class="relative max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-[75vh] lg:min-h-[90vh]">
+
+      <div class="w-full text-center md:text-left">
+
+        <h1 
+          class="font-bold leading-snug text-3xl sm:text-4xl lg:text-5xl"
+        >
+          محصولات تهران پلیمر صبا
+        </h1>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ==================== لیست تمام محصولات ==================== -->
+  <main id="products-grid"
+        class="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white py-16 md:py-24">
+
+    <!-- ================= BACKGROUND ================= -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+
+      <!-- Grid Pattern -->
+      <svg class="absolute inset-0 w-full h-full opacity-[0.03]"
+          xmlns="http://www.w3.org/2000/svg">
+
+        <defs>
+
+          <pattern id="gridPattern"
+                  width="40"
+                  height="40"
+                  patternUnits="userSpaceOnUse">
+
+            <path d="M40 0L0 0 0 40"
+                  fill="none"
+                  stroke="#0b3780"
+                  stroke-width="1"/>
+          </pattern>
+
+        </defs>
+
+        <rect width="100%"
+              height="100%"
+              fill="url(#gridPattern)" />
+
+      </svg>
+
+      <!-- Top Wave -->
+      <svg class="absolute top-0 left-0 w-full"
+          viewBox="0 0 1440 200"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+
+        <path fill="#0b3780"
+              fill-opacity="0.04"
+              d="M0,96L80,101.3C160,107,320,117,480,117.3C640,117,800,107,960,96C1120,85,1280,75,1360,69.3L1440,64V0H0Z">
+        </path>
+
+      </svg>
+    </div>
+
+    <!-- ================= CONTENT ================= -->
+    <div class="relative max-w-8xl mx-auto px-6">
+
+      <!-- ================= HEADER ================= -->
+      <div class="text-center mb-14">
+
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 bg-[#16fa9b]/10 border border-[#16fa9b]/20 px-5 py-2 rounded-full mb-6">
+
+          <span class="w-2 h-2 rounded-full bg-[#16fa9b] animate-pulse"></span>
+
+          <span class="text-[#0b3780] font-semibold text-sm tracking-wide">
+            Engineering Polyamide Compunds
+          </span>
+
+          <span class="w-2 h-2 rounded-full bg-[#16fa9b] animate-pulse"></span>
+
+        </div>
+
+        <!-- Title -->
+        <h2 class="text-3xl md:text-5xl font-black text-[#0b3780] mb-5">
+          کامپاندهای پلی‌آمید مهندسی
+        </h2>
+
+        <!-- Divider -->
+        <div class="flex items-center justify-center gap-3 mb-7">
+
+          <span class="w-20 h-[2px] bg-[#16fa9b] rounded-full"></span>
+
+          <div class="w-3 h-3 rotate-45 bg-[#16fa9b] rounded-sm"></div>
+
+          <span class="w-20 h-[2px] bg-[#16fa9b] rounded-full"></span>
+
+        </div>
+
+        <!-- Text -->
+        <p class="text-slate-600 text-lg max-w-3xl mx-auto leading-9">
+          <span class="font-bold text-[#0b3780]">تهران پلیمر صبا،</span>
+          ارائه دهنده انواع کامپاندهای مهندسی
+          <span class="font-bold text-[#0b3780]">PA6</span>
+          و
+          <span class="font-bold text-[#0b3780]">PA66</span>
+          با درصدهای مختلف الیاف شیشه، ضربه‌پذیر و گریدهای اقتصادی
+          و انواع گرانول‌های
+          <span class="font-bold text-[#0b3780]">PVC</span>
+          جهت مصرف در صنایع کابل، خودرو و لوازم خانگی
+        </p>
+
+      </div>
+
+      <!-- ================= FILTERS ================= -->
+      <div class="flex flex-wrap justify-center gap-4 mb-14">
+
+        <!-- ALL -->
+        <button class="filter-btn active-filter" data-filter="all">
+
+          <span class="btn-content">
+
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+
+              <path d="M3 7L12 3L21 7L12 11L3 7Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"/>
+
+              <path d="M3 12L12 16L21 12"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"/>
+
+              <path d="M3 17L12 21L21 17"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"/>
+
+            </svg>
+
+            <span>همه محصولات</span>
+
+          </span>
+
+        </button>
+
+        <!-- PVC -->
+        <button class="filter-btn" data-filter="pvc">
+
+          <span class="btn-content">
+
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+
+              <!-- Pipe -->
+              <path
+                d="M7 7H13C15.7614 7 18 9.23858 18 12V12C18 14.7614 15.7614 17 13 17H7"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+
+              <!-- Pipe openings -->
+              <circle
+                cx="7"
+                cy="7"
+                r="2"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+
+              <circle
+                cx="7"
+                cy="17"
+                r="2"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+
+            </svg>
+
+            <span>پی‌وی‌سی</span>
+
+          </span>
+
+        </button>
+
+        <!-- PA6 -->
+        <button class="filter-btn" data-filter="pa6">
+
+          <span class="btn-content">
+
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+
+              <path d="M10 3V8L5 17C4.2 18.5 5.2 20 6.8 20H17.2C18.8 20 19.8 18.5 19 17L14 8V3"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+
+              <path d="M8 14C9 13 10 15 12 15C14 15 15 13 16 14"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+
+            </svg>
+
+            <span>پلی‌آمید ۶</span>
+
+          </span>
+
+        </button>
+
+        <!-- PA66 -->
+        <button class="filter-btn" data-filter="pa66">
+
+          <span class="btn-content">
+
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+
+              <path d="M12 3L4 14H11L9 21L20 9H13L15 3H12Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"/>
+
+            </svg>
+
+            <span>پلی‌آمید ۶۶</span>
+
+          </span>
+
+        </button>
+
+        <!-- GF -->
+        <button class="filter-btn" data-filter="gf">
+
+          <span class="btn-content">
+
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+
+              <path d="M12 3L20 7V17L12 21L4 17V7L12 3Z"
+                    stroke="currentColor"
+                    stroke-width="2"/>
+
+              <path d="M8 12H16"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+
+            </svg>
+
+            <span>تقویت شده با الیاف شیشه</span>
+
+          </span>
+
+        </button>
+
+        <!-- IMPACT -->
+        <button class="filter-btn" data-filter="impact">
+
+          <span class="btn-content">
+
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+
+              <path d="M13 2L4 14H11L10 22L20 9H13L13 2Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"/>
+
+            </svg>
+
+            <span>ضربه‌پذیر</span>
+
+          </span>
+
+        </button>
+
+        <!-- OFFGRADE -->
+        <button class="filter-btn" data-filter="offgrade">
+
+          <span class="btn-content">
+
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+
+              <circle cx="12"
+                      cy="12"
+                      r="9"
+                      stroke="currentColor"
+                      stroke-width="2"/>
+
+              <path d="M8 12H16"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+
+            </svg>
+
+            <span>اقتصادی</span>
+
+          </span>
+
+        </button>
+
+      </div>
+
+      <!-- ================= PRODUCTS GRID ================= -->
+      <div id="productsGrid"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8 xl:gap-10">
+      </div>
+
+      <!-- ================= EMPTY MESSAGE ================= -->
+      <div id="noProductsMsg"
+          class="text-center py-16 hidden">
+
+        <div class="text-6xl mb-4">🔍</div>
+
+        <p class="text-slate-500 text-lg">
+          محصولی با این دسته‌بندی یافت نشد.
+        </p>
+
+      </div>
+
+      <!-- ================= CTA ================= -->
+      <div class="text-center mt-16">
+
+        <a href="index.html#contact"
+          class="group relative inline-flex items-center gap-3
+                  bg-[#0b3780]
+                  text-white
+                  px-8 py-4
+                  rounded-2xl
+                  transition-all duration-300
+                  text-lg font-bold
+                  shadow-xl
+                  hover:-translate-y-1
+                  hover:bg-[#16fa9b]
+                  hover:text-[#0b3780]">
+
+          <!-- Glow -->
+          <div class="absolute inset-0 rounded-2xl bg-[#16fa9b]/30 blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+          <svg class="relative z-10 w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+
+            <path stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+            </path>
+
+          </svg>
+
+          <span class="relative z-10">
+            برای مشاوره فنی و قیمت با ما تماس بگیرید
+          </span>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ================= FILTER STYLES ================= -->
+  <style>
+
+    .filter-btn{
+      position: relative;
+      overflow: hidden;
+
+      padding: 14px 26px;
+
+      border-radius: 18px;
+
+      background: rgba(255,255,255,.8);
+
+      backdrop-filter: blur(10px);
+
+      border: 1px solid #e2e8f0;
+
+      color: #334155;
+
+      font-weight: 700;
+
+      transition: all .3s ease;
+
+      box-shadow: 0 4px 14px rgba(0,0,0,.05);
+    }
+
+    .filter-btn:hover{
+      transform: translateY(-4px);
+
+      border-color: #16fa9b;
+
+      color: #0b3780;
+
+      box-shadow: 0 14px 30px rgba(22,250,155,.18);
+    }
+
+    .btn-content{
+      position: relative;
+      z-index: 2;
+
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-icon{
+      width: 20px;
+      height: 20px;
+
+      transition: all .3s ease;
+    }
+
+    .filter-btn:hover .btn-icon{
+      transform: scale(1.15) rotate(6deg);
+    }
+
+    /* ACTIVE */
+
+    .active-filter{
+      background: linear-gradient(135deg,#0b3780,#1249a5) !important;
+
+      border-color: #16fa9b !important;
+
+      color: white !important;
+
+      box-shadow:
+        0 10px 25px rgba(11,55,128,.25),
+        0 0 20px rgba(22,250,155,.15);
+    }
+
+    .active-filter .btn-icon{
+      color: #16fa9b;
+    }
+
+  </style>
+
+  <!-- ================= FILTER SCRIPT ================= -->
+  <script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const filterBtns = document.querySelectorAll('.filter-btn');
+
+      filterBtns.forEach(btn => {
+
+        btn.addEventListener('click', () => {
+
+          filterBtns.forEach(b => {
+            b.classList.remove('active-filter');
+          });
+
+          btn.classList.add('active-filter');
+
+        });
+
+      });
+
+    });
+
+  </script>
+
+  <!-- Footer -->
+  <footer class="relative overflow-hidden bg-gradient-to-br from-[#0a2a5e]/95 to-[#0c3570]/95 text-slate-200 pt-14 pb-6">
+
+    <!-- Background -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="./images/Footer.webp" 
+        alt="background"
+        class="w-full h-full object-cover opacity-20"
+      >
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-[1600px] mx-auto px-6">
+
+      <!-- Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10 xl:gap-8 pb-12">
+
+        <!-- About -->
+        <div class="text-center md:text-right">
+          
+          <div class="flex items-center gap-3 justify-center md:justify-start mb-5">
+            
+            <div class="w-12 h-12 shrink-0">
+              <img 
+                src="./images/logo_green.webp"
+                alt="Tehran Polymer Saba"
+                class="w-full h-full object-contain"
+              >
+            </div>
+
+            <div>
+              <h3 class="text-white font-extrabold text-xl leading-none">
+                تهران پلیمر صبا
+              </h3>
+
+              <span class="text-[#16fa9b] text-xs">
+                Tehran Polymer Saba
+              </span>
+            </div>
+
+          </div>
+
+          <p class="text-sm leading-6 text-slate-300 text-justify">
+            تولید کننده پیشرو کامپاندهای مهندسی بر پایه پلی‌آمید با بیش از دو دهه تجربه، دانش فنی و ارائه راهکارهای تخصصی برای صنایع مختلف کشور.
+          </p>
+
+        </div>
+
+        <!-- Quick Access -->
+        <div class="text-center md:text-right">
+
+          <h3 class="relative inline-block text-white font-bold text-lg pb-3 mb-5 after:absolute after:bottom-0 after:right-0 after:w-28 after:h-[2px] after:bg-[#16fa9b] after:rounded-full">
+            دسترسی سریع
+          </h3>
+
+          <ul class="space-y-3">
+
+            <li>
+              <a href="index.html#home"
+                class="group inline-flex items-center gap-2 text-sm text-slate-300 hover:text-[#16fa9b] transition-all duration-300">
+                <span class="text-[#16fa9b] group-hover:translate-x-1 transition-transform duration-300">
+                  •
+                </span>
+                صفحه اصلی
+              </a>
+            </li>
+
+            <li>
+              <a href="index.html#about"
+                class="group inline-flex items-center gap-2 text-sm text-slate-300 hover:text-[#16fa9b] transition-all duration-300">
+                <span class="text-[#16fa9b] group-hover:translate-x-1 transition-transform duration-300">
+                  •
+                </span>
+                درباره ما
+              </a>
+            </li>
+
+            <li>
+              <a href="index.html#products"
+                class="group inline-flex items-center gap-2 text-sm text-slate-300 hover:text-[#16fa9b] transition-all duration-300">
+                <span class="text-[#16fa9b] group-hover:translate-x-1 transition-transform duration-300">
+                  •
+                </span>
+                محصولات
+              </a>
+            </li>
+
+            <li>
+              <a href="index.html#contact"
+                class="group inline-flex items-center gap-2 text-sm text-slate-300 hover:text-[#16fa9b] transition-all duration-300">
+                <span class="text-[#16fa9b] group-hover:translate-x-1 transition-transform duration-300">
+                  •
+                </span>
+                تماس با ما
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <!-- Contact -->
+        <div class="text-center md:text-right">
+
+          <h3 class="relative inline-block text-white font-bold text-lg pb-3 mb-5 after:absolute after:bottom-0 after:right-0 after:w-27 after:h-[2px] after:bg-[#16fa9b] after:rounded-full">
+            اطلاعات تماس
+          </h3>
+
+          <ul class="space-y-5">
+
+            <!-- Phone -->
+            <li class="flex items-start gap-3 justify-center md:justify-start">
+
+              <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-1">
+                <svg class="w-5 h-5 text-[#16fa9b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                  </path>
+                </svg>
+              </div>
+
+             <div class="flex flex-col gap-2 text-sm text-slate-300 leading-7">
+
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+                <span class="font-medium">۰۲۱-۲۲۹۰۲۱۳۵</span>
+                <span class="text-[#16fa9b]/70">|</span>
+                <span class="font-medium">۰۲۱-۲۲۹۰۲۳۲۵</span>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+                <span class="font-medium">۰۲۱-۲۲۹۲۶۳۷۳</span>
+                <span class="text-[#16fa9b]/70">|</span>
+                <span class="font-medium">۰۲۱-۲۲۹۲۶۳۷۴</span>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+                <span class="font-medium">۰۲۶۳-۷۷۷۸۷۱۰</span>
+                <span class="text-[#16fa9b]/70">|</span>
+                <span class="font-medium">۰۲۶۳-۷۷۷۴۹۶۹</span>
+              </div>
+              
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+                <span class="font-medium">فکس</span>
+                <span class="text-[#16fa9b]/70">:</span>
+                <span class="font-medium">۰۲۱-۲۲۹۰۱۴۸۶</span>
+              </div>
+
+            </div>
+
+            </li>
+
+            <!-- Email -->
+            <li class="flex items-center gap-3 justify-center md:justify-start">
+
+              <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-[#16fa9b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                  </path>
+                </svg>
+              </div>
+
+              <span class="text-sm text-slate-300 break-all">
+                info@tpspolymer.ir
+              </span>
+
+            </li>
+
+          </ul>
+
+        </div>
+
+        <!-- Social + Address -->
+        <div class="text-center md:text-right">
+
+          <h3 class="relative inline-block text-white font-bold text-lg pb-3 mb-5 after:absolute after:bottom-0 after:right-0 after:w-37 after:h-[2px] after:bg-[#16fa9b] after:rounded-full">
+            آدرس دفتر و کارخانه
+          </h3>
+
+          <!-- Address -->
+          <div class="space-y-5">
+
+            <div class="flex items-start gap-3 justify-center md:justify-start text-sm leading-7 text-slate-300">
+
+              <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-1">
+                <svg class="w-5 h-5 text-[#16fa9b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                  </path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z">
+                  </path>
+                </svg>
+              </div>
+
+              <p class="text-sm leading-6 text-slate-300 text-justify">
+                دفتر مرکزی: تهران، میرداماد، میدان احمدی روشن، خیابان گل‌نبی غربی،
+                پلاک ۴۳، واحد ۱ و ۲ و ۳
+              </p>
+
+            </div>
+
+            <div class="flex items-start gap-3 justify-center md:justify-start text-sm leading-7 text-slate-300">
+
+              <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-1">
+                <svg class="w-5 h-5 text-[#16fa9b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                  </path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z">
+                  </path>
+                </svg>
+              </div>
+
+              <p class="text-sm leading-6 text-slate-300 text-justify">
+                کارخانه: تهران، شهرک صنعتی اشتهارد، خیابان ابوریحان،
+                بعد از میدان ابوریحان، نبش خیابان سعدی شرقی، بلوک ۲۲۹
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Divider -->
+      <div class="h-px bg-gradient-to-r from-transparent via-[#16fa9b]/40 to-transparent mb-6"></div>
+
+      <!-- Copyright -->
+      <div class="text-center space-y-2">
+
+        <p class="text-xs md:text-sm text-slate-300 leading-7">
+          © تمامی حقوق مادی و معنوی این وب‌سایت متعلق به
+          <strong class="text-[#16fa9b] font-bold">
+            تولیدی صنعتی تهران پلیمر صبا
+          </strong>
+          می‌باشد.
+        </p>
+
+        <p class="text-xs text-slate-400">
+          طراحی شده با
+          <span class="text-red-500 mx-1">💚</span>
+          برای صنعت پلیمر ایران
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <script defer>
+    // ==================== منوی موبایل ====================
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        menuBtn.classList.toggle('active');
+        if (mobileMenu.classList.contains('mobile-menu-closed')) {
+          mobileMenu.classList.remove('mobile-menu-closed');
+          mobileMenu.classList.add('mobile-menu-open');
+        } else {
+          mobileMenu.classList.remove('mobile-menu-open');
+          mobileMenu.classList.add('mobile-menu-closed');
+        }
+      });
+    }
+
+    // ==================== دیتابیس محصولات ====================
+    const productsData = [
+    {
+    name: "PVC Granules - Green Color",
+    category: "pvc",
+    filterTags: ["pvc"],
+    desc: "چقرمگی بالا، پایداری حرارتی مناسب و فرآیندپذیری مطلوب برای تولید انواع پروفیل و قطعات صنعتی.",
+    img: "./images/pvc1.webp"
+    },
+
+    {
+    name: "PVC Granules - Yellow Color",
+    category: "pvc",
+    filterTags: ["pvc"],
+    desc: "رنگ‌پذیری عالی، انعطاف‌پذیری کنترل‌شده و سطح نهایی یکنواخت برای کاربردهای عمومی و تخصصی.",
+    img: "./images/pvc2.webp"
+    },
+
+    {
+    name: "PVC Granules - Red Color",
+    category: "pvc",
+    filterTags: ["pvc"],
+    desc: "مقاومت ضربه‌ای بالا، پایداری رنگ مطلوب و دوام مناسب در شرایط محیطی مختلف.",
+    img: "./images/pvc3.webp"
+    },
+
+    {
+    name: "PVC Granules - Blue Color",
+    category: "pvc",
+    filterTags: ["pvc"],
+    desc: "جریان‌پذیری مناسب مذاب، یکنواختی ساختار و کیفیت سطح بالا برای تولید قطعات دقیق.",
+    img: "./images/pvc4.webp"
+    },
+
+    {
+    name: "PVC Granules - Black",
+    category: "pvc",
+    filterTags: ["pvc"],
+    desc: "مقاومت بالا در برابر UV، پایداری جوی مناسب و عملکرد قابل اعتماد در کاربردهای بیرونی.",
+    img: "./images/pvc5.webp"
+    },
+
+    {
+    name: "PVC Granules - Natural",
+    category: "pvc",
+    filterTags: ["pvc"],
+    desc: "خلوص بالا، انعطاف‌پذیری مطلوب و کیفیت پایدار برای تولید گسکت و قطعات آب‌بندی.",
+    img: "./images/pvc6.webp"
+    },
+      { name: "PA6 + 30% GF Black", category: "gf", filterTags: ["pa6", "gf"], desc: "حاوی ۳۰ درصد الیاف شیشه، استحکام کششی و مدول خمشی بسیار بالا.", img: "./images/Products/p2.webp" },
+      { name: "Glass Fiber", category: "gf", filterTags: ["gf"], desc: "کامپاند ویژه با درصد بالای الیاف شیشه، مقاومت در برابر خزش.", img: "./images/Products/p4.webp" },
+      { name: "PA6 + 15% GF Natural", category: "gf", filterTags: ["pa6", "gf"], desc: "تعادل عالی بین استحکام و چقرمگی، مناسب قطعات الکتریکی.", img: "./images/Products/p5.webp" },
+      { name: "PA6 High Impact Black", category: "impact", filterTags: ["pa6", "impact"], desc: "ضربه‌پذیری فوق‌العاده، مقاومت بالا در برابر ترک خوردگی.", img: "./images/Products/p6.webp" },
+      { name: "PA6 High Impact Natural", category: "impact", filterTags: ["pa6", "impact"], desc: "چقرمگی بالا بدون دوده، رنگ‌پذیری عالی.", img: "./images/Products/p7.webp" },
+      { name: "PA66 Natural", category: "pa66", filterTags: ["pa66"], desc: "نقطه ذوب بالاتر، استحکام حرارتی برتر برای قطعات موتوری.", img: "./images/Products/p9.webp" },
+      { name: "PA6 Natural - Honey Color", category: "pa6", filterTags: ["pa6"], desc: "رنگ عسلی طبیعی، خواص مکانیکی عالی.", img: "./images/Products/p10.webp" },
+      { name: "PA6 Natural - European", category: "pa6", filterTags: ["pa6"], desc: "استاندارد اروپایی، کیفیت صادراتی، خلوص بالا.", img: "./images/Products/p11.webp" },
+      { name: "PA6 Natural - Extrusion Grade", category: "pa6", filterTags: ["pa6"], desc: "ویژه اکستروژن، گرانروی بالا، مناسب فیلم و لوله.", img: "./images/Products/p12.webp" },
+      { name: "PA6 + 30% GF - Off Grade", category: "offgrade", filterTags: ["pa6", "gf", "offgrade"], desc: "گرید اقتصادی با ۳۰٪ الیاف شیشه، استحکام مناسب.", img: "./images/Products/p14.webp" },
+      { name: "PA66 + 30% GF Natural", category: "gf", filterTags: ["pa66", "gf"], desc: "مقاومت حرارتی و مکانیکی بسیار بالا.", img: "./images/Products/p15.webp" },
+      { name: "PA6 Natural - Off Grade", category: "offgrade", filterTags: ["pa6", "offgrade"], desc: "گرید مقرون به صرفه، مناسب کاربردهای عمومی.", img: "./images/Products/p16.webp" },
+      { name: "PA66 + 30% GF Black", category: "gf", filterTags: ["pa66", "gf"], desc: "نسخه مشکی تقویت شده، مناسب قطعات زیر کاپوت.", img: "./images/Products/p20.webp" },
+      { name: "PA6 Natural - Asian", category: "pa6", filterTags: ["pa6"], desc: "گرید آسیایی، روانی مذاب عالی.", img: "./images/Products/p21.webp" }
+    ];
+
+    function renderProducts(filterValue = "all") {
+      const grid = document.getElementById("productsGrid");
+      const noMsg = document.getElementById("noProductsMsg");
+
+      let filtered = productsData;
+
+      if (filterValue !== "all") {
+        filtered = productsData.filter(
+          p => p.category === filterValue || p.filterTags.includes(filterValue)
+        );
+      }
+
+      if (!filtered.length) {
+        grid.innerHTML = "";
+        noMsg.classList.remove("hidden");
+        return;
+      }
+
+      noMsg.classList.add("hidden");
+
+      // 🔥 مرحله 1: fade-out همه کارت‌های قبلی
+      const oldCards = document.querySelectorAll(".product-card");
+
+      oldCards.forEach(card => {
+        card.style.transition = "all 200ms ease";
+        card.style.opacity = "0";
+        card.style.transform = "translateY(20px) scale(0.95)";
+      });
+
+      // 🔥 صبر تا fade-out کامل شود
+      setTimeout(() => {
+
+        grid.innerHTML = "";
+
+        filtered.forEach((product, index) => {
+
+          const card = document.createElement("div");
+
+          card.className =
+            "product-card bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-md h-full flex flex-col group";
+
+          card.style.opacity = "0";
+          card.style.transform = "translateY(25px) scale(0.96)";
+
+          card.innerHTML = `
+            <div class="relative bg-gradient-to-br from-slate-50 to-slate-100 aspect-square flex items-center justify-center p-6 overflow-hidden">
+              <img 
+                src="${product.img}" 
+                alt="${product.name}" 
+                ${index < 4 ? 'fetchpriority="high"' : 'loading="lazy"'}
+                decoding="async"
+                width="400"
+                height="400"
+                class="w-full h-full object-contain"
+              >
+            </div>
+
+            <div class="p-5 flex flex-col flex-grow text-center">
+
+              <span class="text-xs bg-[#16fa9b]/20 text-[#0b3780] px-3 py-1 rounded-full font-semibold mb-2 inline-block">
+                ${product.category.toUpperCase()}
+              </span>
+
+              <h3 class="text-xl font-bold text-[#0b3780] mb-3">${product.name}</h3>
+
+              <p class="text-slate-600 text-sm leading-relaxed mb-5 flex-grow">
+                ${product.desc}
+              </p>
+
+              <a href="index.html#contact"
+                class="bg-[#0b3780] text-white px-5 py-2.5 rounded-xl
+                        hover:bg-[#16fa9b] hover:text-[#0b3780]
+                        transition-all duration-300 text-sm font-bold">
+                درخواست اطلاعات
+              </a>
+
+            </div>
+          `;
+
+          grid.appendChild(card);
+
+          // 🔥 مرحله 2: fade-in stagger
+          setTimeout(() => {
+            card.style.transition = "all 450ms cubic-bezier(.2,.8,.2,1)";
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0) scale(1)";
+          }, index * 60);
+
+        });
+
+      }, 200);
+    }
+
+    renderProducts("all");
+
+    // فیلترها
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+        filterBtns.forEach(b => {
+          b.classList.remove('active', 'bg-[#0b3780]', 'text-white');
+          b.classList.add('bg-slate-100', 'text-slate-700');
+        });
+        btn.classList.add('active', 'bg-[#0b3780]', 'text-white');
+        btn.classList.remove('bg-slate-100', 'text-slate-700');
+        renderProducts(filter);
+      });
+    });
+
+    // پشتیبانی از لینک مستقیم محصول از صفحه اصلی (hash یا پارامتر)
+    if (window.location.hash) {
+      const targetId = window.location.hash.substring(1);
+      const targetProduct = productsData.find(p => p.name.replace(/\s/g, '-') === targetId);
+      if (targetProduct) {
+        setTimeout(() => {
+          const cards = document.querySelectorAll('.product-card');
+          for (let card of cards) {
+            if (card.innerText.includes(targetProduct.name)) {
+              card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              card.style.boxShadow = '0 0 0 3px #16fa9b';
+              setTimeout(() => card.style.boxShadow = '', 2000);
+              break;
+            }
+          }
+        }, 300);
+      }
+    }
+  </script>
+
+  <script defer>
+    window.addEventListener('load', function() {
+      const loader = document.getElementById('page-loader');
+      if(loader) {
+        loader.style.transition = 'opacity 0.5s';
+        loader.style.opacity = '0';
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 500);
+      }
+    });
+  </script>
+
+</body>
+</html>
